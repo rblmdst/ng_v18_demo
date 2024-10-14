@@ -1,0 +1,30 @@
+<h3>#4 To reduce repetition</h3>
+<h4>Reduce signal getters calls</h4>
+
+<p>Status : {{ response().status }}</p>
+<p>
+  First Data : {{ response().data[0].name }} [ {{ response().data[0].level }} ]
+</p>
+
+<h4>Can be combined with class binding</h4>
+
+<div>
+  <label for="alert-type">Alert type : </label>
+  <select [(ngModel)]="alertClass" name="" id="alert-type">
+    <option value="error">Error</option>
+    <option value="info">Info</option>
+    <option value="warning">Warning</option>
+    <option value="success">Success</option>
+  </select>
+</div>
+<div
+  class="alert"
+  [class]="{
+    red: alertClass() === 'error',
+    green: alertClass() === 'success',
+    orange: alertClass() === 'warning',
+    blue: alertClass() === 'info'
+  }"
+>
+  Alert message
+</div>

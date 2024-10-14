@@ -1,0 +1,8 @@
+<h3>#3 Can be used to improve performance</h3>
+<ul>
+  @for (user of (userList$ | async); track user.id) {
+  <li>{{ user.name }}</li>
+  }
+</ul>
+
+<div>Count : {{ (userList$ | async)?.length }}</div>
