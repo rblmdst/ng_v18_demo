@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
+import { MyFormComponent } from './my-form/my-form.component';
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [],
+  imports: [MyFormComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
 })

@@ -1,0 +1,17 @@
+<form [formGroup]="form">
+  <!-- Username -->
+  <div class="control-row">
+    <label for="username-ctrl">Username :</label>
+    <input formControlName="username" id="username-ctrl" type="text" />
+  </div>
+  <!-- Password -->
+  <div class="control-row">
+    <label for="password-ctrl">Password :</label>
+    <input formControlName="password" id="password-ctrl" type="password" />
+  </div>
+  <!-- actions buttons -->
+  <div class="action-btns">
+    <button type="reset">Reset</button>
+    <button [disabled]="!form.valid" type="submit">Submit</button>
+  </div>
+</form>
