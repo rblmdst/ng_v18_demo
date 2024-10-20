@@ -3,9 +3,12 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import {
   FormControl,
   FormGroup,
+  FormResetEvent,
+  FormSubmittedEvent,
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
+import { filter } from 'rxjs';
 
 @Component({
   selector: 'app-my-form',
@@ -27,7 +30,7 @@ export class MyFormComponent implements OnInit {
   });
 
   ngOnInit(): void {
-    this.usernameCtrl.valueChanges
+    /* this.usernameCtrl.valueChanges
       .pipe(takeUntilDestroyed(this.destroyRef))
       .subscribe((event) => {
         console.log('[valueChanges] ', event);
@@ -37,6 +40,21 @@ export class MyFormComponent implements OnInit {
       .pipe(takeUntilDestroyed(this.destroyRef))
       .subscribe((event) => {
         console.log('[statusChanges] ', event);
+      }); */
+    this.form.events
+      .pipe(
+        takeUntilDestroyed(this.destroyRef),
+        filter(
+          (e) => e instanceof FormSubmittedEvent || e instanceof FormResetEvent
+        )
+      )
+      .subscribe((event) => {
+        if (event instanceof FormSubmittedEvent) {
+          console.log('Submitted');
+        } else if (event instanceof FormResetEvent) {
+          console.log('Reset');
+        }
+        console.log('[events] ', event);
       });
   }
 }
