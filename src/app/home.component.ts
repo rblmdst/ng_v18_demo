@@ -11,6 +11,7 @@ const roles = [
   { name: 'Dev FullStack', id: 'e-003' },
   { name: 'Product Manager', id: 'b-000' },
   { name: 'Engineering management', id: 'e-000' },
+  { name: 'Unknown', id: 'u-000' },
 ];
 
 @Component({
